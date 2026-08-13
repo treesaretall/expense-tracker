@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import './App.css'
-import Summary from './Summary'
-import TransactionForm from './TransactionForm'
-import TransactionList from './TransactionList'
+import Summary from './components/Summary'
+import TransactionForm from './components/TransactionForm'
+import TransactionList from './components/TransactionList'
+import SpendingChart from './components/SpendingChart'
 
 function App() {
   const [transactions, setTransactions] = useState([
@@ -30,6 +31,8 @@ function App() {
       <p className="subtitle">Track your income and expenses</p>
 
       <Summary transactions={transactions} />
+
+      <SpendingChart transactions={transactions} />
 
       <TransactionForm onAddTransaction={handleAddTransaction} />
 
