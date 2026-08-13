@@ -9,19 +9,31 @@ function Summary({ transactions }) {
 
   const balance = totalIncome - totalExpenses;
 
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
+
   return (
     <div className="summary">
       <div className="summary-card">
-        <h3>Income</h3>
-        <p className="income-amount">${totalIncome}</p>
+        <h3>Total Income</h3>
+        <div className="income-amount">{formatCurrency(totalIncome)}</div>
+        <p>Money earned</p>
       </div>
       <div className="summary-card">
-        <h3>Expenses</h3>
-        <p className="expense-amount">${totalExpenses}</p>
+        <h3>Total Expenses</h3>
+        <div className="expense-amount">{formatCurrency(totalExpenses)}</div>
+        <p>Money spent</p>
       </div>
       <div className="summary-card">
-        <h3>Balance</h3>
-        <p className="balance-amount">${balance}</p>
+        <h3>Net Balance</h3>
+        <div className="balance-amount">{formatCurrency(balance)}</div>
+        <p>Available funds</p>
       </div>
     </div>
   );
